@@ -75,6 +75,7 @@ def export_mesh(mesh, file_obj, file_type=None, resolver=None, **kwargs):
     # OBJ files save assets everywhere
     if file_type == 'obj':
         kwargs['resolver'] = resolver
+        kwargs['tex_name'] = os.path.basename(file_obj.name)
     export = _mesh_exporters[file_type](mesh, **kwargs)
 
     if hasattr(file_obj, 'write'):

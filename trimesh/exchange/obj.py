@@ -722,6 +722,7 @@ def export_obj(mesh,
                return_texture=False,
                write_texture=True,
                resolver=None,
+               tex_name=None,
                digits=8):
     """
     Export a mesh as a Wavefront OBJ file.
@@ -821,7 +822,7 @@ def export_obj(mesh,
                 material = material.to_simple()
             (tex_data,
              tex_name,
-             mtl_name) = material.to_obj()
+             mtl_name) = material.to_obj(tex_name)
             # add the reference to the MTL file
             objects.appendleft('mtllib {}'.format(mtl_name))
             # add the directive to use the exported material
